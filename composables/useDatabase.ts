@@ -22,7 +22,7 @@ const getUserAccounts = () => {
   let accounts = $(useState("accounts"))
   onSnapshot(doc(db, "Users", uid.value), (snapshot) => {
     const snapshotData = snapshot.data()
-    accounts = snapshotData.accounts
+    accounts = snapshotData?.accounts
     gotSnapshot = true
   })
 }
@@ -56,10 +56,7 @@ const addNewAccount = async (
     ]
   })
 }
-const deleteAccount = async (id
-                               :
-                               string
-) => {
+const deleteAccount = async (id: string) => {
   const db = getFirestore()
   const { uid } = useAuth()
   let gotSnapshot: boolean = $(useState("gotSnapshot"))

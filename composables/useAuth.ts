@@ -6,7 +6,7 @@ function useAuth() {
   const { $auth: auth } = useNuxtApp()
   let isLoading = $(useState("isLoading", () => false))
   let error = $(useState("authError", () => ""))
-  let user = $(useState("user", () => null))
+  let user: userInterface | null = $(useState("user", () => null))
   let establishedAuthEventHandler = $(useState("authEventHandler", () => false))
   const router = useRouter()
 
@@ -20,7 +20,8 @@ function useAuth() {
       isLoading = false
       error = ""
     } catch (err) {
-      error = err.message
+      if (err instanceof Error)
+        error = err.message
       isLoading = false
     }
   }
@@ -34,7 +35,8 @@ function useAuth() {
       error = ""
 
     } catch (err) {
-      error = err.message
+      if (err instanceof Error)
+        error = err.message
       isLoading = false
     }
   }
@@ -51,7 +53,8 @@ function useAuth() {
       error = ""
       await router.push("/")
     } catch (err) {
-      error = err.message
+      if (err instanceof Error)
+        error = err.message
       isLoading = false
     }
   }
@@ -66,9 +69,17 @@ function useAuth() {
     establishedAuthEventHandler = true
   }
   const signOut = () => __signOut(router)
-  const uid = computed(() => user.uid)
+  const uid = computed(() => user?.uid)
 
-  return { user: $$(user), isLoading: $$(isLoading), error: $$(error), uid, signOut, login, createAccount }
+  return {
+    user: $$(user),
+    isLoading: $$(isLoading),
+    error: $$(error),
+    uid,
+    signOut,
+    login,
+    createAccount
+  }
 }
 
 export default useAuth
