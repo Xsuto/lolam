@@ -15,8 +15,8 @@
       <label>Password</label>
       <article>
         <input required :type="showPassword ? 'text' : 'password'" v-model="password" />
-        <EyeIcon class="icon" v-if="!showPassword" @click="handleShowButtonClick" />
-        <EyeSlashedIcon class="icon" v-else @click="handleShowButtonClick" />
+        <IconsEye class="icon" v-if="!showPassword" @click="handleShowButtonClick" />
+        <IconsEyeSlashed class="icon" v-else @click="handleShowButtonClick" />
       </article>
     </div>
     <label>Server</label>
@@ -64,7 +64,7 @@
 import { useRouter } from "vue-router"
 
 const { uid } = useAuth()
-const { addNewAccount } = useDatabase(uid)
+const { addNewAccount } = useDatabase()
 const username = $ref("")
 const server = $ref("")
 const login = $ref("")

@@ -3,7 +3,7 @@
     <h1>Yours accounts</h1>
     <span>
       <p>Add new account </p>
-      <AddIcon @click="handleClick" />
+      <IconsAdd @click="handleClick" />
     </span>
   </div>
 </template>

@@ -5,7 +5,7 @@
         <h1>Username </h1>
         <p>{{ account.name }}</p>
       </div>
-      <TrashIcon @click="handleDeleteButton" class="icon" />
+      <IconsTrash @click="handleDeleteButton" class="icon" />
     </div>
     <div class="info">
       <h1>Server </h1>
@@ -20,8 +20,8 @@
         <h1>Login </h1>
         <p>{{ account.login }}</p>
       </div>
-      <CopyIcon v-if="!copiedLogin" @click="copyToClipboard('login')" class="icon" />
-      <CheckIcon v-else @click="copyToClipboard('login')" class="icon" />
+      <IconsCopy v-if="!copiedLogin" @click="copyToClipboard('login')" class="icon" />
+      <IconsCheck v-else @click="copyToClipboard('login')" class="icon" />
     </div>
 
     <div class="container">
@@ -30,10 +30,10 @@
         <p> {{ password }}</p>
       </div>
       <div>
-        <EyeIcon class="icon" v-if="!showPassword" @click="handleShowButtonClick" />
-        <EyeSlashedIcon class="icon" v-else @click="handleShowButtonClick" />
-        <CopyIcon v-if="!copiedPassword" @click="copyToClipboard('password')" class="icon" />
-        <CheckIcon v-else @click="copyToClipboard('password')" class="icon" />
+        <IconsEye class="icon" v-if="!showPassword" @click="handleShowButtonClick" />
+        <IconsEyeSlashed class="icon" v-else @click="handleShowButtonClick" />
+        <IconsCopy v-if="!copiedPassword" @click="copyToClipboard('password')" class="icon" />
+        <IconsCheck v-else @click="copyToClipboard('password')" class="icon" />
       </div>
     </div>
 
