@@ -1,7 +1,9 @@
 <template>
   <main>
     <DashBoardHeader />
-    <AccountsGrid />
+    <client-only>
+      <AccountsGrid />
+    </client-only>
   </main>
 </template>
 
