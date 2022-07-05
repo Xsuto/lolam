@@ -1,13 +1,23 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, User as userInterface } from "firebase/auth"
-import { Router } from "vue-router"
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  User as userInterface,
+} from "firebase/auth"
 
+enum SharedData {
+  isLoading = "isLoadingAuth",
+  error = "errorAuth",
+  user = "user",
+}
 
 function useAuth() {
   const { $auth: auth } = useNuxtApp()
-  let isLoading = $(useState("isLoading", () => false))
-  let error = $(useState("authError", () => ""))
-  let user: userInterface | null = $(useState("user", () => null))
-  let establishedAuthEventHandler = $(useState("authEventHandler", () => false))
+  let isLoading = $(useState<boolean>(SharedData.isLoading, () => false))
+  let error = $(useState<string>(SharedData.error, () => ""))
+  let user = $(useState<userInterface | null>(SharedData.user, () => null))
+  let establishedAuthEventHandler = $(
+    useState<boolean>("authEventHandler", () => false)
+  )
   const router = useRouter()
 
   const createAccount = async (email: string, password: string) => {
@@ -20,8 +30,7 @@ function useAuth() {
       isLoading = false
       error = ""
     } catch (err) {
-      if (err instanceof Error)
-        error = err.message
+      if (err instanceof Error) error = err.message
       isLoading = false
     }
   }
@@ -33,28 +42,25 @@ function useAuth() {
       await signInWithEmailAndPassword(auth, email, password)
       isLoading = false
       error = ""
-
     } catch (err) {
-      if (err instanceof Error)
-        error = err.message
+      if (err instanceof Error) error = err.message
       isLoading = false
     }
   }
-  const __signOut = async (router: Router) => {
+  const signOut = async () => {
     try {
+      if (isLoading) return
+      isLoading = true
       const { accounts, gotSnapshot } = useDatabase()
       accounts.value = []
       gotSnapshot.value = false
 
-      if (isLoading) return
-      isLoading = true
       await auth.signOut()
       isLoading = false
       error = ""
       await router.push("/")
     } catch (err) {
-      if (err instanceof Error)
-        error = err.message
+      if (err instanceof Error) error = err.message
       isLoading = false
     }
   }
@@ -68,7 +74,6 @@ function useAuth() {
     })
     establishedAuthEventHandler = true
   }
-  const signOut = () => __signOut(router)
   const uid = computed(() => user?.uid)
 
   return {
@@ -78,7 +83,7 @@ function useAuth() {
     uid,
     signOut,
     login,
-    createAccount
+    createAccount,
   }
 }
 

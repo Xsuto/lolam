@@ -7,19 +7,18 @@
         <button @click="handleClick">Try it</button>
       </article>
     </div>
-    <img src="../assets/PasswordImg.svg" alt="Password Image" />
+    <img alt="Password Image" src="../assets/PasswordImg.svg" />
   </section>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
-  layout: "home"
+  layout: "home",
 })
 const router = useRouter()
 const handleClick = () => router.push("/login")
 </script>
 <style lang="scss" scoped>
-
 section {
   background-color: var(--bgColor);
   display: flex;
@@ -61,7 +60,6 @@ div {
       filter: brightness(0.7);
     }
   }
-
 }
 
 img {

@@ -1,15 +1,19 @@
-import { defineNuxtConfig } from 'nuxt'
-import eslintPlugin from "vite-plugin-eslint"
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+import { defineNuxtConfig } from "nuxt"
 export default defineNuxtConfig({
-    experimental: {
-        reactivityTransform: true
+  experimental: {
+    reactivityTransform: true,
+  },
+  css: ["@/assets/style.css"],
+  ssr: false,
+  buildModules: ["@nuxtjs/eslint-module"],
+  runtimeConfig: {
+    public: {
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      messagingSenderId: "",
+      appId: "",
     },
-    css: [
-        "@/assets/style.css"
-    ],
-    ssr: false,
-    buildModules: [
-        '@nuxtjs/eslint-module'
-    ]
+  },
 })
