@@ -14,7 +14,7 @@ pnpm install --shamefully-hoist
 
 ## Create .env 
 
-Maks sure to create .env with those variables
+Maks sure to create .env with these variables
 
 #### NUXT_PUBLIC_API_KEY
 #### NUXT_PUBLIC_AUTH_DOMAIN
