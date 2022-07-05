@@ -1,3 +1,8 @@
+# This app is avaiable at lolam.xyz
+#
+
+
+## Steps for self-hosting
 ## Setup
 
 Make sure to install the dependencies:
@@ -11,12 +16,12 @@ pnpm install --shamefully-hoist
 
 Maks sure to create .env with those variables
 
-NUXT_PUBLIC_API_KEY
-NUXT_PUBLIC_AUTH_DOMAIN
-NUXT_PUBLIC_DATABASE_URL
-NUXT_PUBLIC_PROJECT_ID
-NUXT_PUBLIC_MESSAGE_SENDER_ID
-NUXT_PUBLIC_APPID
+#### NUXT_PUBLIC_API_KEY
+#### NUXT_PUBLIC_AUTH_DOMAIN
+#### NUXT_PUBLIC_DATABASE_URL
+#### NUXT_PUBLIC_PROJECT_ID
+#### NUXT_PUBLIC_MESSAGE_SENDER_ID
+#### NUXT_PUBLIC_APPID
 ## Development Server
 
 Start the development server on http://localhost:3000
