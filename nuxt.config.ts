@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     reactivityTransform: true,
   },
   css: ["@/assets/style.css"],
-  ssr: false,
+  ssr: true,
   buildModules: ["@nuxtjs/eslint-module"],
   runtimeConfig: {
     public: {
