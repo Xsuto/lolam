@@ -7,11 +7,13 @@
         <button @click="handleClick">Try it</button>
       </article>
     </div>
-    <img alt="Password Image" src="../assets/PasswordImg.svg" />
+    <PasswordImg class="passwordImage" />
   </section>
 </template>
 
 <script lang="ts" setup>
+import PasswordImg from "~/components/PasswordImg.vue"
+
 definePageMeta({
   layout: "home",
 })
@@ -62,7 +64,7 @@ div {
   }
 }
 
-img {
+.passwordImage {
   position: absolute;
   top: 30%;
   left: 50%;
@@ -79,7 +81,7 @@ img {
 }
 
 @media only screen and (max-width: 1000px) {
-  img {
+  .passwordImage {
     top: 40%;
     width: 400px;
     height: 300px;
@@ -87,7 +89,7 @@ img {
 }
 
 @media only screen and (max-width: 800px) {
-  img {
+  .passwordImage {
     display: none;
   }
   div {
