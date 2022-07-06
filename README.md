@@ -1,4 +1,4 @@
-# This app is avaiable at lolam.xyz
+# This app is avaiable at lolam.co
 #
 
 
